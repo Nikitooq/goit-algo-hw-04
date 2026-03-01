@@ -16,6 +16,13 @@ def change_contact(args, contacts):
     else:
         return "Contact is not valid"
 
+def show_phone(args, contacts):
+    name = "".join(args)
+    if name in contacts:
+        phone_number = contacts[name]
+    else:
+        phone_number = "Name is not found"
+    return phone_number
 def show_all(contacts):
     return(contacts)
 
@@ -36,6 +43,8 @@ def main():
             print(add_contact(args, contacts))
         elif command == "change":
             print(change_contact(args, contacts))
+        elif command == "phone":
+            print(show_phone(args, contacts))
         elif command == "all":
             print(show_all(contacts))
         else:

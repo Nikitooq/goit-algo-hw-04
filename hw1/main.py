@@ -8,11 +8,14 @@ def total_salary(path):
             file.seek(0)
             for line in file.readlines():
                 line = line.split(",")
-                salary = int(line[1].strip())
+                salary = float(line[1].strip())
                 salaries.append(salary)
             total = sum(salaries)
-            average = total // len(salaries)
-            return total, average
+            try:
+                average = total / len(salaries)
+                return total, average
+            except ZeroDivisionError:
+                return None
     except FileNotFoundError:
         return None
 
